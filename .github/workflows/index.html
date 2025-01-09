@@ -2,9 +2,45 @@
 <html>
 <head>
   <title>Countdown Timer</title>
+  <style>
+    /* Add some basic styling to the timer */
+    #timer {
+      font-size: 48px;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
   <h1>Countdown Timer</h1>
-  <!-- Your countdown timer code will go here -->
+  <div id="timer"></div>
+
+  <script>
+    // Set the countdown date
+    var countDownDate = new Date("Jan 15, 2025 00:00:00").getTime();
+
+    // Update the countdown every second
+    var x = setInterval(function() {
+      var now = new Date().getTime();
+      var distance = countDownDate - now;
+
+      // Calculate the days, hours, minutes, and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display the countdown
+      document.getElementById("timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+      // If the countdown is over, display a message
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("timer").innerHTML = "EXPIRED";
+      }
+    }, 1000);
+  </script>
 </body>
 </html>
+
+
