@@ -1,123 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Countdown Clock</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
-    .clock-container {
-      border: 1px solid #ccc;
-      padding: 20px;
-      width: 500px;
-      margin: 40px auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .clock-label {
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-    .clock {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      margin-bottom: 20px;
-      width: 100%;
-      padding: 0 20px;
-      box-sizing: border-box;
-    }
-    .clock div {
-      margin: 0 10px;
-      width: 120px;
-      text-align: center;
-    }
-    .clock-value {
-      font-size: 48px;
-      font-weight: bold;
-    }
-    .total-hours-container {
-      text-align: center;
-    }
-    .total-hours {
-      font-size: 36px;
-      font-weight: bold;
-    }
-    .settings {
-      margin-top: 20px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Countdown Clock</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+text-align: center;
+}
+.clock-container {
+border: 1px solid #ccc;
+padding: 20px;
+width: 500px;
+margin: 40px auto;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+.clock-label {
+font-size: 18px;
+font-weight: bold;
+margin-bottom: 10px;
+}
+.clock {
+display: flex;
+justify-content: center;
+align-items: center;
+margin-bottom: 20px;
+width: 100%;
+}
+.clock div {
+margin: 0 10px;
+width: 120px;
+text-align: center;
+}
+.clock-value {
+font-size: 48px;
+font-weight: bold;
+}
+.total-hours-container {
+text-align: center;
+}
+.total-hours {
+font-size: 36px;
+font-weight: bold;
+}
+.settings {
+margin-top: 20px;
+}
+</style>
 </head>
 <body>
-  <h1>Countdown Clock</h1>
-  <div class="clock-container">
-    <div class="clock">
-      <div>
-        <div class="clock-label">Days</div>
-        <div id="days" class="clock-value"></div>
-      </div>
-      <div>
-        <div class="clock-label">Hours</div>
-        <div id="hours" class="clock-value"></div>
-      </div>
-      <div>
-        <div class="clock-label">Minutes</div>
-        <div id="minutes" class="clock-value"></div>
-      </div>
-      <div>
-        <div class="clock-label">Seconds</div>
-        <div id="seconds" class="clock-value"></div>
-      </div>
-    </div>
-    <div class="total-hours-container">
-      <div class="total-hours">
-        <span id="total-hours"></span> Total Hours
-      </div>
-    </div>
-  </div>
-  <div class="settings">
-    <label for="date">Set your desired date:</label>
-    <input type="date" id="date" value="2025-01-13">
-    <label for="time">Set your desired time:</label>
-    <input type="time" id="time" value="10:00:00">
-  </div>
-  <script>
-    let countDownDate;
-    let interval;
-    function updateCountdown() {
-      const dateInput = document.getElementById("date").value;
-      const timeInput = document.getElementById("time").value;
-      countDownDate = new Date(dateInput + "T" + timeInput).getTime();
-      const now = new Date().getTime();
-      const distance = countDownDate - now;
-      if (distance < 0) {
-        clearInterval(interval);
-        document.getElementById("days").innerHTML = "00";
-        document.getElementById("hours").innerHTML = "00";
-        document.getElementById("minutes").innerHTML = "00";
-        document.getElementById("seconds").innerHTML = "00";
-        document.getElementById("total-hours").innerHTML = "00";
-      } else {
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        const totalHours = days * 24 + hours;
-        document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
-        document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
-        document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
-        document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
-        document.getElementById("total-hours").innerHTML = totalHours.toString();
-      }
-    }
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-  </script>
+<h1>Countdown Clock</h1>
+<div class="clock-container">
+<div class="clock">
+<div>
+<div class="clock-label">Days</div>
+<div id="days" class="clock-value"></div>
+</div>
+<div>
+<div class="clock-label">Hours</div>
+<div id="hours" class="clock-value"></div>
+</div>
+<div>
+<div class="clock-label">Minutes</div>
+<div id="minutes" class="clock-value"></div>
+</div>
+<div>
+<div class="clock-label">Seconds</div>
+<div id="seconds" class="clock-value"></div>
+</div>
+</div>
+<div class="total-hours-container">
+<div class="total-hours">
+<span id="total-hours"></span> Total Hours
+</div>
+</div>
+</div>
+<div class="settings">
+<label for="date">Set your desired date:</label>
+<input type="date" id="date" value="2025-01-13">
+<label for="time">Set your desired time:</label>
+<input type="time" id="time" value="10:00:00">
+</div>
+<script>
+let countDownDate;
+let interval;
+function updateCountdown() {
+const dateInput = document.getElementById("date").value;
+const timeInput = document.getElementById("time").value;
+countDownDate = new Date(dateInput + "T" + timeInput).getTime();
+const now = new Date().getTime();
+const distance = countDownDate - now;
+if (distance < 0) {
+clearInterval(interval);
+document.getElementById("days").innerHTML = "00";
+document.getElementById("hours").innerHTML = "00";
+document.getElementById("minutes").innerHTML = "00";
+document.getElementById("seconds").innerHTML = "00";
+document.getElementById("total-hours").innerHTML = "00";
+} else {
+const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+const totalHours = days * 24 + hours;
+document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+document.getElementById("total-hours").innerHTML = totalHours.toString();
+}
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
+</script>
 <h3>Designed by: A. Rosenbaum</h3>
 </body>
 </html>
